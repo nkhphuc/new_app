@@ -1,7 +1,7 @@
-<h1> This is blogs index page</h1>
+<h1> This is blogs index page </h1>
 
 <% @blogs.each do |blog| %>
-<h3> <%= blog.title %> </h3>
-<div> <%= blog.body %> </div>
-<%= link_to 'Show blog', blog_path(blog.id) %>
+  <h3> <%= blog.title %> </h3>
+  <div> <%= blog.body %> </div>
+  <%= link_to 'Show blog', blog_path(blog) %>
 <% end %>

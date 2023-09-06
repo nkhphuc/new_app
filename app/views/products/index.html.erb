@@ -1,0 +1,12 @@
+<h1> This is products index page </h1>
+
+<div>
+  <h3> Add new product here: </h3>
+  <%= link_to 'Add product', new_product_path %>
+</div>
+
+<% @products.each do |product| %>
+  <h3> <%= product.name %> </h3>
+  <div> <%= number_to_currency(product.price) %> </div>
+  <%= link_to 'Show product', product_path(product) %>
+<% end %>

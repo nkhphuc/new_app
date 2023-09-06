@@ -9,6 +9,6 @@ class Product < ApplicationRecord
   validates :price, presence: true
 
   def out_of_stock?
-    true if inventories.sum(&:stock) <= 5
+    inventories.sum(&:stock) <= 5
   end
 end
