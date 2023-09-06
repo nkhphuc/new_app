@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Category class
 class Category < ApplicationRecord
   has_many :inventories, dependent: :destroy
   has_many :products, through: :inventories
