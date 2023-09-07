@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_07_034009) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_07_082507) do
   create_table "blogs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -49,6 +49,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_07_034009) do
     t.index ["product_id"], name: "index_inventories_on_product_id"
   end
 
+  create_table "payments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.integer "total"
+    t.bigint "customer_id", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_payments_on_customer_id"
+  end
+
   create_table "products", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.decimal "price", precision: 10
@@ -58,4 +67,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_07_034009) do
 
   add_foreign_key "inventories", "categories"
   add_foreign_key "inventories", "products"
+  add_foreign_key "payments", "customers"
 end
