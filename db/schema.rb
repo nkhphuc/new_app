@@ -37,7 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_07_090329) do
     t.string "last_name"
     t.string "email", default: "", null: false
     t.string "phone_number"
-    t.integer "gender"
+    t.integer "gender", default: 0, null: false
     t.date "birthday"
     t.integer "plan", default: 0, null: false
     t.string "address"
