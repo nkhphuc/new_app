@@ -6,8 +6,6 @@ class Customer < ApplicationRecord
 
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: /\A[^@\s]+@[^@\s]+\z/ }
   validates :phone_number, format: { with: /^\+\d+$/, multiline: true }
-  validates :gender, inclusion: { in: %w[male female] }
-  validates :plan, inclusion: { in: %w[free medium plus] }
 
   enum gender: { male: 0, female: 1 }
   enum plan: { free: 0, medium: 1, plus: 2 }

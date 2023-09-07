@@ -8,7 +8,7 @@ class CreateCustomers < ActiveRecord::Migration[7.0]
       t.string :last_name
       t.string :email, null: false, default: ''
       t.string :phone_number
-      t.integer :gender
+      t.integer :gender, null: false, default: 0
       t.date :birthday
       t.integer :plan, null: false, default: 0
       t.string :address
