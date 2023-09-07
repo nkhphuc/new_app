@@ -13,13 +13,13 @@ namespace :db do
       price = Faker::Number.number(digits: 4)
       Product.create! name:, price:
     end
-    puts 'Products created successfully'
+    puts 'Products created successfully!'
 
     10.times do |_n|
       name = Faker::Device.unique.manufacturer
       Category.create! name:
     end
-    puts 'Category created successfully'
+    puts 'Category created successfully!'
 
     100.times do |_n|
       stock = Faker::Number.number(digits: 3)
@@ -27,6 +27,6 @@ namespace :db do
       category_id = rand(1..10)
       Inventory.create! stock:, product_id:, category_id:
     end
-    puts 'Inventory created successfully'
+    puts 'Inventory created successfully!'
   end
 end
