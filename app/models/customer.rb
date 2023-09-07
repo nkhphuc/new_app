@@ -2,6 +2,8 @@
 
 # Customer class
 class Customer < ApplicationRecord
+  has_many :payments, dependent: :destroy
+
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: /\A[^@\s]+@[^@\s]+\z/ }
   validates :phone_number, format: { with: /^\+\d+$/, multiline: true }
   validates :gender, inclusion: { in: %w[male female] }
