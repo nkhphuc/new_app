@@ -75,3 +75,14 @@ namespace :db do
     puts 'Timeprices and Coupons created successfully!'
   end
 end
+
+namespace :db do
+  desc 'seed customers registration dates data'
+  task seed_cregdates: :environment do
+    (1..100).each do |n|
+      registration_date = Faker::Date.between(from: '2019-01-01', to: '2023-01-01')
+      Customer.find(n).update! registration_date:
+    end
+    puts 'Customers registration dates updated successfully!'
+  end
+end
