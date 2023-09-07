@@ -58,3 +58,20 @@ namespace :db do
     puts 'Customers created successfully!'
   end
 end
+
+namespace :db do
+  desc 'seed timeprices, coupons data'
+  task seed_tc: :environment do
+    10.times do |_n|
+      name = Faker::Beer.name
+      price = Faker::Number.number(digits: 3)
+      Timeprice.create! name:, price:
+    end
+    10.times do |_n|
+      name = Faker::Coffee.blend_name
+      price = Faker::Number.number(digits: 2)
+      Coupon.create! name:, price:
+    end
+    puts 'Timeprices and Coupons created successfully!'
+  end
+end
