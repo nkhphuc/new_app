@@ -19,7 +19,7 @@ namespace :db do
       name = Faker::Device.unique.manufacturer
       Category.create! name:
     end
-    puts 'Category created successfully!'
+    puts 'Categories created successfully!'
 
     100.times do |_n|
       stock = Faker::Number.number(digits: 3)
@@ -27,6 +27,34 @@ namespace :db do
       category_id = rand(1..10)
       Inventory.create! stock:, product_id:, category_id:
     end
-    puts 'Inventory created successfully!'
+    puts 'Inventories created successfully!'
+  end
+end
+
+namespace :db do
+  desc 'seed customers data with Faker gem'
+  task seed_customers: :environment do
+    80.times do |_n|
+      first_name = Faker::Name.first_name
+      last_name = Faker::Name.last_name
+      email = Faker::Internet.unique.email
+      phone_number = Faker::PhoneNumber.cell_phone_in_e164
+      gender = rand(2)
+      birthday = Faker::Date.birthday(min_age: 18, max_age: 65)
+      plan = [*0..2].sample
+      address = ['Hà Nội', 'Huế', 'Đà Nẵng', 'Sài Gòn'].sample
+      Customer.create! first_name:, last_name:, email:, phone_number:, gender:, birthday:, plan:, address:
+    end
+    20.times do |_n|
+      first_name = Faker::Name.first_name
+      last_name = Faker::Name.last_name
+      email = Faker::Internet.unique.email
+      phone_number = Faker::PhoneNumber.cell_phone_in_e164
+      gender = rand(2)
+      birthday = Faker::Date.birthday(min_age: 18, max_age: 65)
+      address = ['Hà Nội', 'Huế', 'Đà Nẵng', 'Sài Gòn'].sample
+      Customer.create! first_name:, last_name:, email:, phone_number:, gender:, birthday:, address:
+    end
+    puts 'Customers created successfully!'
   end
 end
