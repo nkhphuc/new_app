@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_07_082507) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_07_083930) do
   create_table "blogs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -49,6 +49,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_07_082507) do
     t.index ["product_id"], name: "index_inventories_on_product_id"
   end
 
+  create_table "payment_details", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "payment_id", default: 0, null: false
+    t.string "menu_type"
+    t.bigint "menu_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["menu_type", "menu_id"], name: "index_payment_details_on_menu"
+    t.index ["payment_id"], name: "index_payment_details_on_payment_id"
+  end
+
   create_table "payments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.integer "total"
@@ -67,5 +77,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_07_082507) do
 
   add_foreign_key "inventories", "categories"
   add_foreign_key "inventories", "products"
+  add_foreign_key "payment_details", "payments"
   add_foreign_key "payments", "customers"
 end
