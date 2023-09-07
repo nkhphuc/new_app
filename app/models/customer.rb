@@ -19,5 +19,5 @@ class Customer < ApplicationRecord
   # query in rails console to find customers in Hue: Customer.where(address: 'Hue')
   scope :in_hue, -> { where('address = ?', 'Hue') }
   # rails console, check for first customer is free or not: Customer.find(1).free?
-  scope :reg_in_22, -> { where(registration_date: Date.parse('2022-1-1')..Date.parse('2022-12-31')) }
+  scope :reg_in22, -> { where(registration_date: '2022-1-1'.to_date..'2022-12-31'.to_date) }
 end
