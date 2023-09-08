@@ -13,4 +13,5 @@ class Product < ApplicationRecord
   end
 
   enum type: { 'Phone' => 0, 'Camera' => 1, 'Computer' => 2 }
+  serialize :properties
 end
