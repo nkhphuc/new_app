@@ -8,3 +8,4 @@ AllCops:
   SuggestExtensions: false
   Exclude:
     - 'db/migrate/20230907034009_create_customers.rb'
+    - 'lib/tasks/db.rake'
