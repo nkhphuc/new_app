@@ -1,0 +1,2 @@
+class ComputerCategory < Category
+end

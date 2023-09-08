@@ -62,7 +62,7 @@ namespace :db do
     end
     puts 'Computers created successfully!'
 
-    3.times do |_n|
+    2.times do |_n|
       name = Faker::Computer.unique.type
       type = 2
       Category.create! name:, type:
@@ -72,7 +72,7 @@ namespace :db do
     50.times do |_n|
       stock = Faker::Number.number(digits: 2)
       product_id = rand(101..150)
-      category_id = rand(21..23)
+      category_id = rand(21..22)
       Inventory.create! stock:, product_id:, category_id:
     end
     puts 'Computer inventories created successfully!'

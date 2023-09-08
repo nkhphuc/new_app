@@ -1,0 +1,2 @@
+class CameraCategory < Category
+end

@@ -12,5 +12,5 @@ class Product < ApplicationRecord
     inventories.sum(&:stock) <= 5
   end
 
-  enum type: { phone: 0, camera: 1, computer: 2 }
+  enum type: %w[Phone Camera Computer]
 end
