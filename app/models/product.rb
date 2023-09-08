@@ -11,4 +11,6 @@ class Product < ApplicationRecord
   def out_of_stock?
     inventories.sum(&:stock) <= 5
   end
+
+  enum type: { phone: 0, camera: 1, computer: 3 }
 end
