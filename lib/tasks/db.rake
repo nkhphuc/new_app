@@ -8,26 +8,74 @@ namespace :db do
     end
     puts 'Recreate database successfully!'
 
-    100.times do |_n|
+    50.times do |_n|
       name = Faker::Device.model_name
       price = Faker::Number.number(digits: 4)
-      Product.create! name:, price:
+      type = 0
+      Product.create! name:, price:, type:
     end
-    puts 'Products created successfully!'
+    puts 'Phones created successfully!'
 
     10.times do |_n|
       name = Faker::Device.unique.manufacturer
-      Category.create! name:
+      type = 0
+      Category.create! name:, type:
     end
-    puts 'Categories created successfully!'
+    puts 'Phone categories created successfully!'
 
-    100.times do |_n|
+    50.times do |_n|
       stock = Faker::Number.number(digits: 3)
-      product_id = Faker::Number.number(digits: 2)
+      product_id = rand(1..50)
       category_id = rand(1..10)
       Inventory.create! stock:, product_id:, category_id:
     end
-    puts 'Inventories created successfully!'
+    puts 'Phone inventories created successfully!'
+
+    50.times do |_n|
+      name = Faker::Camera.model
+      price = Faker::Number.number(digits: 5)
+      type = 1
+      Product.create! name:, price:, type:
+    end
+    puts 'Camera created successfully!'
+
+    10.times do |_n|
+      name = Faker::Camera.unique.brand
+      type = 1
+      Category.create! name:, type:
+    end
+    puts 'Camera categories created successfully!'
+
+    50.times do |_n|
+      stock = Faker::Number.number(digits: 2)
+      product_id = rand(51..100)
+      category_id = rand(11..20)
+      Inventory.create! stock:, product_id:, category_id:
+    end
+    puts 'Camera inventories created successfully!'
+
+    50.times do |_n|
+      name = Faker::Computer.stack
+      price = Faker::Number.number(digits: 4)
+      type = 2
+      Product.create! name:, price:, type:
+    end
+    puts 'Computers created successfully!'
+
+    3.times do |_n|
+      name = Faker::Computer.unique.type
+      type = 2
+      Category.create! name:, type:
+    end
+    puts 'Computer categories created successfully!'
+
+    50.times do |_n|
+      stock = Faker::Number.number(digits: 2)
+      product_id = rand(101..150)
+      category_id = rand(21..23)
+      Inventory.create! stock:, product_id:, category_id:
+    end
+    puts 'Computer inventories created successfully!'
   end
 end
 
@@ -45,6 +93,7 @@ namespace :db do
       address = ['Hà Nội', 'Huế', 'Đà Nẵng', 'Sài Gòn'].sample
       Customer.create! first_name:, last_name:, email:, phone_number:, gender:, birthday:, plan:, address:
     end
+
     20.times do |_n|
       first_name = Faker::Name.first_name
       last_name = Faker::Name.last_name
@@ -67,6 +116,7 @@ namespace :db do
       price = Faker::Number.number(digits: 3)
       Timeprice.create! name:, price:
     end
+
     10.times do |_n|
       name = Faker::Coffee.blend_name
       price = Faker::Number.number(digits: 2)

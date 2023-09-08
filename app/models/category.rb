@@ -9,7 +9,7 @@ class Category < ApplicationRecord
 
   before_save :capitalize_name
 
-  enum type: { phone: 0, camera: 1, computer: 3 }
+  enum type: { phone: 0, camera: 1, computer: 2 }
 
   private
 
