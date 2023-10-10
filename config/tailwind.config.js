@@ -1,4 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
+const plugin = require('tailwindcss/plugin')
 
 module.exports = {
   content: [
@@ -19,5 +20,9 @@ module.exports = {
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/typography'),
     require('@tailwindcss/container-queries'),
+    plugin(function({addVariant}){
+      addVariant('group-open', ':merge(.group).open &');
+      addVariant('peer-open', ':merge(.peer).open ~ &');
+    })
   ]
 }

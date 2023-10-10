@@ -9,10 +9,55 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <script>
+      window.onload = () => {
+        const mobileMenuIcon = document.getElementById('mobile-menu-button');
+        mobileMenuIcon.addEventListener('click', () => {
+          if(mobileMenuIcon.classList.contains('open')){
+            mobileMenuIcon.classList.remove('open');
+          }else{
+            mobileMenuIcon.classList.add('open');
+          }
+        })
+      }
+    </script>
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <main>
+      <header class='text-zinc-200'>
+        <nav class='sticky flex top-0 bg-gradient-to-r from-rose-500 to-pink-500'>
+          <div class='flex items-center p-2 gap-2'>
+            <%= image_tag 'logo', width: '50x', height: '50x' %>
+            <div class='font-bold text-2xl'>
+              Company <span class='text-sky-900' > Name </span>
+            </div>
+          </div>
+          <div class='md:hidden block ml-auto pr-4 my-auto cursor-pointer'>
+            <div id='mobile-menu-button' class='group'>
+              <div class='bg-zinc-200 rounded-full w-8 h-1 m-1 group-open:rotate-45 transition-all group-open:top-2 relative top-0'></div>
+              <div class='opacity-100 group-open:opacity-0 bg-zinc-200 rounded-full w-8 h-1 m-1 transition-all'></div>
+              <div class='bg-zinc-200 rounded-full w-8 h-1 m-1 group-open:-rotate-45 transition-all group-open:-top-2 relative top-0'></div>
+            </div>
+            <div class='absolute top-[62px] bg-gradient-to-r from-rose-500 to-pink-500 w-full left-0'>mobile menu</div>
+          </div>
+          <div class='hidden flex-1 md:flex items-center justify-end'>
+            <div class='menu-item'><span>Home</span></div>
+            <div class='menu-item'><a href=<%= blogs_path %>><span>Blogs</span></a></div>
+            <div class='menu-item group'><span>Products</span>
+              <div class='group-hover:block hidden bg-pink-500 absolute top-full right-0 whitespace-nowrap rounded-b-md text-right'>
+                <div class='p-4 font-bold hover:bg-white/5 hover:text-zinc-200 transition-colors ease-in-out cursor-pointer text-pink-200'>
+                  <span>First</span>
+                </div>
+                <div class='p-4 font-bold hover:bg-white/5 hover:text-zinc-200 transition-colors ease-in-out cursor-pointer text-pink-200'>
+                  <span>Second</span>
+                </div>
+              </div>
+            </div>
+            <div class='menu-item'><span>Categories</span></div>
+          </div>
+        </nav>
+      </header>
       <%= yield %>
     </main>
   </body>
